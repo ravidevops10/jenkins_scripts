@@ -1,7 +1,9 @@
 #-*- coding=utf-8 -*-
+"""
 # author : albertcheng
 # date   : 2017.5.8
 # script : used for read data from excel, and upload data to mysql. It's coded for jenkins automatic jobs.
+"""
 
 import xlrd
 import os
@@ -19,7 +21,9 @@ Name_Start_Row = 1
 Data_Start_Row = 4
 
 class EasyXLS(object):
-
+    """
+    used for read excel.
+    """
 
     def __init__(self):
         print "tool initialled."
