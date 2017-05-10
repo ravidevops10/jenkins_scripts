@@ -1,5 +1,0 @@
-id	type	level	enter_limit	open_data	introduce	des	image_1	image_2	items
-40302000	1	22	3	2|4|6|1	desc_resources_describe_exp	desc_resources_introduce_exp	图片名字	图片名字	40302010|40302020|40302030|40302040
-40304000	4	29	3	3|5|7|1	desc_resources_describe_gift	desc_resources_introduce_gift	图片名字	图片名字	40304010|40304020|40304030|40304040
-40301000	2	34	3	3|5|7|1	desc_resources_describe_gold	desc_resources_introduce_gold	图片名字	图片名字	40301010|40301020|40301030|40301040
-40303000	3	38	3	2|4|6|1	desc_resources_describe_material	desc_resources_introduce_material	图片名字	图片名字	40303010|40303020|40303030|40303040
