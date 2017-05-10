@@ -7,6 +7,8 @@ import xlrd
 import os
 import re
 import platform
+import shutil, time
+
 if platform.system().lower() == "windows":
     defaultEncoding = "gbk"
 else:
@@ -43,8 +45,10 @@ class EasyXLS(object):
 
     def appendStr(self, _row, data = []):
         #print _row
-        if len([x for x in _row if len(str(x) if type(x) in [float, int] else x) > 0]) > 2:
+        if len([x for x in _row if len(str(x) if type(x) in [float, int] else x) > 0]) > 1:
             data.append("\t".join([self.CheckInt(cell) for cell in _row ]) + "\n")
+            
+            #print "\t".join([self.CheckInt(cell) for cell in _row ]) + "\n"
         return data
 
     def readNameRow(self, _sheet):
@@ -53,6 +57,13 @@ class EasyXLS(object):
         return self.appendStr([x for x in self.name_row if not x.startswith("_")], [])
 
     def readDataRow(self, _row, _sheet):
+        if _sheet.name == "s_dropOut":
+        ##    print len([_sheet.cell(_row, _col).value for _col in range(_sheet.ncols) if _col not in self.name_ignore_index])
+        #    print len(_sheet.row_values(_row))
+            print self.name_row
+            print _sheet.row_values(_row)
+            print [_sheet.cell(_row, _col).value for _col in range(_sheet.ncols) if _col not in self.name_ignore_index]
+        #print "*" * 20
         return [_sheet.cell(_row, _col).value for _col in range(_sheet.ncols) if _col not in self.name_ignore_index]
         #return  _sheet.row_values(_row)
 
@@ -62,7 +73,8 @@ class EasyXLS(object):
             SheetData = self.readNameRow(nSheet)
             for nRow in range(Data_Start_Row, nSheet.nrows):
                 dataRow = self.readDataRow(nRow, nSheet)
-                SheetData = self.appendStr(nSheet.row_values(nRow), SheetData)          
+                SheetData = self.appendStr(dataRow, SheetData)          
+
             print "read data from excel - [%s] finished." % nSheet.name
             writeToText(nSheet.name, SheetData)
             print "write data to text file finished."
@@ -78,7 +90,7 @@ def writeToText(_name, _data):
 
 
 if __name__ == "__main__":
-    import shutil, time
+    
     st = time.time()
     if os.path.exists("./textconfig"):shutil.rmtree("./textconfig")
     os.makedirs("./textconfig")
