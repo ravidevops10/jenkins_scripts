@@ -79,12 +79,14 @@ if __name__ == "__main__":
         host_json = modify_host_json(Host_Config_File)
         print "HostInfo data is modified, and now is ", host_json["HostInfo"]
         write_json(Host_Config_File, host_json)
+    else:
+        print "HostInfo File is not exists, skipped modify HostInfo file."
 
-    elif os.path.exists(Server_Config_File):
+    if os.path.exists(Server_Config_File):
         server_json = modify_server_json(Server_Config_File)
         print "Launch Server Host data is modified, and now is ", server_json["server_list"]
         write_json(Server_Config_File, server_json)
 
     else:
-        print "HostInfo File is not exists, skipped modify HostInfo file."
+        print "Launch Server Host File is not exists, skipped modify Launch Server Host file."
     
