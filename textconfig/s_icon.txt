@@ -1,0 +1,7 @@
+id	resource	resource2
+1001	icon_touxiang4	icon_touxiang2_2
+1002	icon_touxiang5	icon_touxiang2_1
+1003	icon_touxiang6	icon_touxiang2_6
+1004	icon_touxiang7	icon_touxiang2_4
+1005	icon_touxiang8	icon_touxiang2_5
+1006	icon_touxiang9	icon_touxiang2_3

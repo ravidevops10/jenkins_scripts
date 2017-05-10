@@ -1,7 +1,8 @@
 #-*- coding=utf8 -*-
-"""
+# author : albertcheng
+# date   : 2017.5.8
+# script : used for gernerate version config data for jenkins. It's coded for jenkins automatic jobs.
 
-"""
 
 import os
 import json

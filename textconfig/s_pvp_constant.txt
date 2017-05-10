@@ -1,0 +1,10 @@
+name	data_type	value
+cent_down	int	0
+cent_up	int	10000
+season_cycle	int	1
+cent_origin	int	0
+open_time	string	12:00_13:00|21:00_22:00
+season_end_time	string	2_4:00
+reward_time	string	2_4:00
+list_num	int	50
+score_decrease_limit	int	3499

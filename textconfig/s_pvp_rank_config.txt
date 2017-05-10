@@ -1,0 +1,8 @@
+rank_id	rank_name	rank_cent_down	rank_cent_up	match_range	fight_cent	win_reward	fail_reward	grade_up_reward	decrease_ratio	rank_icon1	rank_icon2	match_entity	cent_exchange	week_reward_rank	week_reward	notice
+1	青铜	0	499	100	-5_-25|-4_-20|-3_-15|-2_-10|-1_-5|1_20|2_25|3_30|4_35|5_40	6_55|105_5	6_30|105_3	4_50	0	icon_qingtong	icon_qingtong	icon_qingtong	0	-1	105_50|4_50	0
+2	白银	500	999	100	-5_-25|-4_-20|-3_-15|-2_-10|-1_-5|1_20|2_25|3_30|4_35|5_40	6_55|105_5	6_30|105_3	4_100	0.5005	icon_baiyin	icon_baiyin	icon_baiyin	0	-1	105_100|4_100	0
+3	黄金	1000	1499	100	-5_-25|-4_-20|-3_-15|-2_-10|-1_-5|1_20|2_25|3_30|4_35|5_40	6_55|105_5	6_30|105_3	4_150	0.467	icon_huangjin	icon_huangjin	icon_huangjin	0	-1	105_150|4_150	1
+4	铂金	1500	1999	100	-5_-25|-4_-20|-3_-15|-2_-10|-1_-5|1_20|2_25|3_30|4_35|5_40	6_55|105_5	6_30|105_3	4_200	0.5003	icon_bojin	icon_bojin	icon_bojin	0	-1	105_200|4_200	1
+5	钻石	2000	2499	100	-5_-25|-4_-20|-3_-15|-2_-10|-1_-5|1_20|2_25|3_30|4_35|5_40	6_55|105_5	6_30|105_3	4_250	0.5002	icon_zuanshi	icon_zuanshi	icon_zuanshi	0	-1	105_250|4_250	1
+6	超新星	2500	2999	100	-5_-25|-4_-20|-3_-15|-2_-10|-1_-5|1_20|2_25|3_30|4_35|5_40	6_55|105_5	6_30|105_3	4_300	0.5002	icon_chaoxinxing	icon_chaoxinxing	icon_chaoxinxing	0	-1	105_300|4_300	1
+7	女武神	3000	3499	100	-5_-25|-4_-20|-3_-15|-2_-10|-1_-5|1_20|2_25|3_30|4_35|5_40	6_55|105_5	6_30|105_3	4_400	0.5001	icon_nvwushen	icon_nvwushen	icon_nvwushen	0	-1	105_340|4_340	1

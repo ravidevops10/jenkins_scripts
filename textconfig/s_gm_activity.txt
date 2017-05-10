@@ -1,0 +1,10 @@
+id	switches	icon	order_id	name	des	banner	timer_type	enable_time	enable_last_time	open_time	open_last_time	template_type
+1001	1	ActivityItem_SevenDaysGift	1	name_activity_1001	desc_name_activity_2001	SevenDaysGiftBanner	2		864000			game_progress
+1002	1	ActivityItem_PowerGot	2	name_activity_1002	desc_name_activity_2002	PowerGotBanner	2					power_every_day
+1003	1	ActivityItem_PlayerLevel	3	name_activity_1003	desc_name_activity_2003	PlayerLevelBanner	2		1296000			game_progress
+1004	1	ActivityItem_IntimacyLevel	4	name_activity_1004	desc_name_activity_2004	IntimacyLevelBanner	2		1296000			game_progress
+1005	1	ActivityItem_FightPowerAward	5	name_activity_1005	desc_name_activity_2005	FightPowerAwardBanner	2		1296000			game_progress
+1006	1	ActivityItem_FightCmdProgress	6	name_activity_1006	desc_name_activity_2006	FightCmdProgressBanner	2		1296000			game_progress
+1007	1	ActivityItem_SimulateTrainScore	7	name_activity_1007	desc_name_activity_2007	SimulateTrainScoreBanner	2		1296000			game_progress
+1008	1	ActivityItem_TowerMaxFloor	8	name_activity_1008	desc_name_activity_2008	TowerMaxFloorBanner	2		1296000			game_progress
+1009	1	ActivityItem_Exam	9	name_activity_1009	desc_name_activity_2009	ExamBanner	2		1296000			game_progress
