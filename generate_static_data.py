@@ -136,6 +136,6 @@ if __name__ == "__main__":
     print "initialled time : %.2fs" % (time.time() - START_TIME)
     for nExcel in scan_files():
         print isinstance(nExcel, unicode)
-        print "ready to handle with excel : %s" % nExcel.encode("utf8")
-        XLS_READER.read_data_from_sheets(XLS_READER.get_sheets(nExcel))
+        print "ready to handle with excel : %s" % nExcel.encode("gbk")
+        XLS_READER.read_data_from_sheets(XLS_READER.get_sheets(nExcel.encode("gbk")))
     print "totally used time : %.2fs" % (time.time() - START_TIME)
