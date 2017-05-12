@@ -116,8 +116,8 @@ def scan_files():
     """
     scan an get all files and return
     """
-    return ["EXCEL_CONFIG_PATH" + x.decode(DEFAULT_ENCODING)\
-             for x in os.listdir("EXCEL_CONFIG_PATH")]
+    return [EXCEL_CONFIG_PATH + x.decode(DEFAULT_ENCODING)\
+             for x in os.listdir("./" + EXCEL_CONFIG_PATH)]
 
 def write_to_text(_name, _data):
     """
@@ -135,6 +135,6 @@ if __name__ == "__main__":
     XLS_READER = EasyXLS()
     print "initialled time : %.2fs" % (time.time() - START_TIME)
     for nExcel in scan_files():
+
         XLS_READER.read_data_from_sheets(XLS_READER.get_sheets(nExcel))
     print "totally used time : %.2fs" % (time.time() - START_TIME)
-    
