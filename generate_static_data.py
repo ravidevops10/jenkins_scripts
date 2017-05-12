@@ -115,8 +115,9 @@ class EasyXLS(object):
 def scan_files():
     """
     scan an get all files and return
+    ##.decode(DEFAULT_ENCODING))\
     """
-    return [os.path.join(EXCEL_CONFIG_PATH, x.decode(DEFAULT_ENCODING))\
+    return [os.path.join(EXCEL_CONFIG_PATH, x)\
              for x in os.listdir("./" + EXCEL_CONFIG_PATH)]
 
 def write_to_text(_name, _data):
