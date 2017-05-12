@@ -135,6 +135,7 @@ if __name__ == "__main__":
     XLS_READER = EasyXLS()
     print "initialled time : %.2fs" % (time.time() - START_TIME)
     for nExcel in scan_files():
-        print "ready to handle with excel : %s" % nExcel
+        print isinstance(nExcel, unicode)
+        print "ready to handle with excel : %s" % nExcel.encode("utf8")
         XLS_READER.read_data_from_sheets(XLS_READER.get_sheets(nExcel))
     print "totally used time : %.2fs" % (time.time() - START_TIME)
