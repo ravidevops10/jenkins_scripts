@@ -39,7 +39,7 @@ class EasyXLS(object):
         """
         get sheets from workbook
         """
-        if not os.path.exists(_file).encode("utf8"):
+        if not os.path.exists(_file.encode("utf8")):
             print "xls not exists -- %s" % _file.encode("gbk")
             return []
         else:
