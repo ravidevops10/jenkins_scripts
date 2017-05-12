@@ -37,7 +37,7 @@ b_version = os.getenv("JOKER_VERSION")
 b_build = os.getenv("BUILD_NUMBER")
 b_git = os.getenv("GIT_COMMIT")[:6]
 b_time = time.ctime()
-DeviceType = os.getenv("device_type")
+DeviceType = os.getenv("device_type").lower()
 VersionType = os.getenv("version_type")
 workspace = os.getenv("WORKSPACE")
 SVN_REVISION = os.getenv("SVN_REVISION_2")# because of jekens passed SVN_REVISION_2
@@ -91,7 +91,7 @@ def update_ios_json(_json, _prefix, _remote):
     _json[DeviceType]["size"] = "%.2f MB" % (os.path.getsize(_package) / 1024 / 1024) 
     _json[DeviceType]["url"] = "itms-services://?action=download-manifest&url=https://oe5ing96n.qnssl.com/%s.plist" % (_prefix) 
     # update plist data
-    _json = update_ios_plist(_json, _prefix, _remote)
+    update_ios_plist(_json, _prefix, _remote)
     # refresh all json files. including history.json, version.json, client.json
     refresh_json_files(_name, _prefix, _json)
     return _json
@@ -142,15 +142,15 @@ def get_remote_plist(_remote, _url, _ver, _name):
     """
     # modify remote plist file's content
     """
-    with urllib2.urlopen(_remote) as _plist:
-        _plist_data = _plist.read()
-        import re
-        sinfo1 = re.compile(r"{client_url}")
-        sinfo2 = re.compile(r"{version}")
-        sinfo3 = re.compile(r"{name}")
-        content = sinfo1.sub(_url, client_plist)
-        content = sinfo2.sub(_ver, content)
-        content = sinfo3.sub(_name, content)
+    _plist =  urllib2.urlopen(_remote)
+    _plist_data = _plist.read()
+    import re
+    sinfo1 = re.compile(r"{client_url}")
+    sinfo2 = re.compile(r"{version}")
+    sinfo3 = re.compile(r"{name}")
+    content = sinfo1.sub(_url, _plist_data)
+    content = sinfo2.sub(_ver, content)
+    content = sinfo3.sub(_name, content)
     return content
 
 def write_local_file(_file, _info):
