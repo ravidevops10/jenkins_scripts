@@ -101,23 +101,23 @@ class EasyXLS(object):
         read_data_from_sheets
         """
         for _sheet in _sheets:
-			if _sheet.name != 's_employe_data':
-				continue
+            if _sheet.name != 's_employe_data':
+                continue
             print "read data from excel - [%s]" % _sheet.name
             sheet_data, self.name_row, self.name_ignore_index = self.read_name_row(_sheet)
-			print self.name_row
-			print self.name_ignore_index
+            print self.name_row
+            print self.name_ignore_index
             for _row in range(DATA_START_ROW, _sheet.nrows):
                 # read and append row data
                 sheet_data = self.append_string(self.read_data_row(_row, _sheet), sheet_data)
-				print sheet_data[1]
-				break
+                print sheet_data[1]
+                break
             #print "read data from excel - [%s] finished." % _sheet.name
             write_to_text(_sheet.name, sheet_data)
             #print "write data to text file finished."
             #print "used time : %.2fs" % (time.time() - self.starttime)
             self.starttime = time.time()
-			break
+            break
 
 def scan_files():
     """
@@ -136,8 +136,8 @@ def write_to_text(_name, _data):
 
 
 if __name__ == "__main__":
-	print TEXT_CONFIG_PATH
-	print EXCEL_CONFIG_PATH
+    print TEXT_CONFIG_PATH
+    print EXCEL_CONFIG_PATH
     START_TIME = time.time()
     if os.path.exists(TEXT_CONFIG_PATH):
         shutil.rmtree(TEXT_CONFIG_PATH)
