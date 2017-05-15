@@ -129,6 +129,8 @@ def write_to_text(_name, _data):
 
 
 if __name__ == "__main__":
+	print TEXT_CONFIG_PATH
+	print EXCEL_CONFIG_PATH
     START_TIME = time.time()
     if os.path.exists(TEXT_CONFIG_PATH):
         shutil.rmtree(TEXT_CONFIG_PATH)
