@@ -124,9 +124,12 @@ class EasyXLS(object):
             # step 3: read comment row data from sheet.
             sheet_data.append(self.read_comment_row(_sheet))
             # step 4: loop read data row from sheet.
+            sheet_data, self.name_row, self.name_ignore_index = self.read_name_row(_sheet)
+
             for _row in range(DATA_START_ROW, _sheet.nrows):
                 # read and append row data
                 sheet_data = self.append_string(self.read_data_row(_row, _sheet), sheet_data)
+                #print sheet_data[1]
             print "read data from excel - [%s] finished." % _sheet.name
             write_to_text(_sheet.name, sheet_data)
             print "write data to text file finished."
@@ -151,6 +154,8 @@ def write_to_text(_name, _data):
 
 
 if __name__ == "__main__":
+    print TEXT_CONFIG_PATH
+    print EXCEL_CONFIG_PATH
     START_TIME = time.time()
     if os.path.exists(TEXT_CONFIG_PATH):
         shutil.rmtree(TEXT_CONFIG_PATH)
