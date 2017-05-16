@@ -122,9 +122,9 @@ class EasyXLS(object):
             # step 1: read name row data from sheet, and prepare ignore index list.
             sheet_data, self.name_row, self.name_ignore_index = self.read_name_row(_sheet)
             # step 2: read type row data from sheet.
-            sheet_data.append(self.read_type_row(_sheet))
+            sheet_data = self.append_string(self.read_type_row(_sheet), sheet_data)
             # step 3: read comment row data from sheet.
-            sheet_data.append(self.read_comment_row(_sheet))
+            sheet_data = self.append_string(self.read_comment_row(_sheet), sheet_data)
             # step 4: loop read data row from sheet.
             for _row in range(DATA_START_ROW, _sheet.nrows):
                 # read and append row data
