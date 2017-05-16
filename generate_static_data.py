@@ -85,7 +85,7 @@ class EasyXLS(object):
         read type row data from sheet.
         """
         print "read type from sheet"
-        return [_sheet.cell(COMMENT_START_ROW, _col).value for _col in range(_sheet.ncols) \
+        return [_sheet.cell(TYPE_START_ROW, _col).value for _col in range(_sheet.ncols) \
                 if _col not in self.name_ignore_index]
 
     def read_comment_row(self, _sheet):
@@ -93,7 +93,7 @@ class EasyXLS(object):
         read comment row data from sheet.
         """
         print "read comment from sheet"
-        return [_sheet.cell(TYPE_START_ROW, _col).value for _col in range(_sheet.ncols) \
+        return [_sheet.cell(COMMENT_START_ROW, _col).value for _col in range(_sheet.ncols) \
                 if _col not in self.name_ignore_index]
 
     def read_data_row(self, _row, _sheet):
