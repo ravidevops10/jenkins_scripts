@@ -9,8 +9,8 @@ And it's also design to used in jenkins jobs.
 import os
 import shutil
 
-CS_OUTPUT_PATH = os.getenv("CS_OUTPUT_PATH") or "./CS_OUTPUT_PATH"
-TXT_INPUT_PATH = os.getenv("TXT_INPUT_PATH") or "./TXT_INPUT_PATH"
+CS_OUTPUT_PATH = os.getenv("CS_OUTPUT_PATH")# or "./CS_OUTPUT_PATH"
+TXT_INPUT_PATH = os.getenv("TEXT_CONFIG_PATH")# or "./TEXT_CONFIG_PATH"
 
 def check_path(_path):
     """
