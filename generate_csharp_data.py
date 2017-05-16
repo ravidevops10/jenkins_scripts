@@ -1,20 +1,13 @@
 #-*- coding=utf8 -*-
-'''
+"""
 Created at 2015.12.11， modified at 2017.5.16
 @author: albertcheng
-This script is used to generate csharp table\class files from txt config files.
+This script is used to generate csharp table/class files from txt config files.
 And it's also design to used in jenkins jobs.
-'''
-import subprocess
+"""
+
 import os
 import shutil
-import re
-import json
-import time
-import sys
-import hashlib
-import telnetlib
-import base64
 
 CS_OUTPUT_PATH = os.getenv("CS_OUTPUT_PATH") or "./CS_OUTPUT_PATH"
 TXT_INPUT_PATH = os.getenv("TXT_INPUT_PATH") or "./TXT_INPUT_PATH"
@@ -22,7 +15,6 @@ TXT_INPUT_PATH = os.getenv("TXT_INPUT_PATH") or "./TXT_INPUT_PATH"
 def check_path(_path):
     """
     initialize path.
-    
     """
     if os.path.exists(_path):
         shutil.rmtree(_path)
@@ -47,9 +39,9 @@ class ResTool(object):
             sheet_data = self.read_txt(sheet_txt)
             #print "*" * 60
             #print repr(sheet_data[0])
-            _type = [x.strip() for x in sheet_data[0].split("\t")]
+            _type = [x.strip() for x in sheet_data[1].split("\t")]
             #print repr(_type)
-            _name = [x.strip() for x in sheet_data[1].split("\t")]
+            _name = [x.strip() for x in sheet_data[0].split("\t")]
             _comment = [x.strip() for x in sheet_data[2].split("\t")]
 
             self.generate_cs_from_data(CS_OUTPUT_PATH,
@@ -123,7 +115,7 @@ class ResTool(object):
                       u"using Joker.ResourceManager;",
                       u"using UnityEngine;\n",
                       u"namespace Table {",
-                      u"public class %ss_table\n{" % filename,
+                      u"public class %s_table\n{" % filename,
                       u"\tprivate %s[]\tentities;\n" % filename]
 
         if _type[0] == "string":
@@ -195,7 +187,7 @@ class ResTool(object):
               u"    if (textAsset == null) {",
               u"        return;",
               u"    }",
-              u"    onTableLoad(textAsset.text);"
+              u"    onTableLoad(textAsset.text);}"
         ])
 
         if _type[0] == "string":
@@ -242,6 +234,8 @@ class ResTool(object):
                     else:
                         _ += _val + u"\t"
                 elif _type_field == "string":
+                    if not isinstance(_val, unicode):
+                        _val = _val.decode("utf8")
                     _ += _val + u"\t"
             out_stream.append(_ + u"\r")
         self.write_file(out_filename, out_stream)
