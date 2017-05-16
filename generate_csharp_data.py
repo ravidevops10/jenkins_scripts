@@ -119,7 +119,7 @@ class ResTool(object):
         out_filename = os.path.join(outpath, filename + "_table.cs")
         out_stream = [u"using System;",
                       u"using System.Collections.Generic;",
-                      u"using System.Text;",
+                      u"using Joker.ResourceManager;",
                       u"using UnityEngine;\n",
                       u"namespace Table {",
                       u"public class %ss_table\n{" % filename,
@@ -139,9 +139,9 @@ class ResTool(object):
             u"\t\t\tif (sInstance == null)\n\t\t\t{\n\
             \t\t\t\tsInstance = new %s_table();\n\t\t\t\tsInstance.Load();\n\t\t\t\t}\n" % filename,
             u"\t\t\treturn sInstance; \n\t\t}\n\t}\n\n\
-        \tvoid Load()\n\t{\n\t\tAction<byte[]> onTableLoad = (data) => {",
-            u"\t\tstring text = FileMgr.ReadTxt(data);\n\t\tstring[] lines = \
-        text.Split(\"\\n\\r\".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);",
+        \tvoid Load()\n\t{\n\t\tAction<string> onTableLoad = (text) => {",
+            u"\t\tstring[] lines = text.Split(\"\\n\\r\".ToCharArray(), \
+            StringSplitOptions.RemoveEmptyEntries);",
             u"\t\tint count = lines.Length;\n\t\tif (count <= 0) {\n\
         \t\t\treturn;\n\t\t}\n",
             u"\t\tentities = new %s[count];\n\t\tint realcount = 0;" %  filename,
@@ -184,9 +184,17 @@ class ResTool(object):
         out_stream.extend([
             u"\t\t\tkeyIdxMap[ entity.%s ] = i;\n\t\t\t++realcount;\n\t\t}\n\n\n\
         \t\tthis.count = realcount;\n\t};\n" % _name[0],
-            u"\tstring file = VerMgr.localPathRoot + \"/Table/\";\n\t\
-        file = file + %s.FileName + \".bin\";" % filename,
-            u"\tFileMgr.OpenFileBin(file, onTableLoad);\n}\n\n"
+              u"    string fileName = %s.FileName;" % filename,
+              u"    TextAsset textAsset;",
+              u"    if (AssemblySetting.LoadProtocInResource) {",
+              u"        textAsset = Resources.Load<TextAsset>(\"Table/\" + fileName);",
+              u"    } else {",
+              u"        textAsset = RuntimeResourceManager.Instance.LoadCachedAsset<TextAsset>(fileName); ",
+              u"    }",
+              u"    if (textAsset == null) {",
+              u"        return;",
+              u"    }",
+              u"    onTableLoad(textAsset.text);"
         ])
 
         if _type[0] == "string":
@@ -208,7 +216,7 @@ class ResTool(object):
         """
         generate_bin_from_data
         """
-        out_filename = os.path.join(outpath, filename + ".bin")
+        out_filename = os.path.join(outpath, filename + ".txt")
         out_stream = []
 
         for line in _data:
