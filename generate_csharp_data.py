@@ -22,6 +22,7 @@ TXT_INPUT_PATH = os.getenv("TXT_INPUT_PATH") or "./TXT_INPUT_PATH"
 def check_path(_path):
     """
     initialize path.
+    
     """
     if os.path.exists(_path):
         shutil.rmtree(_path)
