@@ -168,6 +168,9 @@ class ResTool(object):
             elif type_field.lower() == "bool":
                 out_stream.append(u"\t\t\tentity.%s = int.Parse(vals[%s]) != 0;" \
                         % (name_field, field_index))
+            elif type_field.lower() == "double":
+                out_stream.append(u"\t\t\tentity.%s = double.Parse(vals[%s]) != 0;" \
+                        % (name_field, field_index))
             else:
                 out_stream.append(u"\t\t\tentity.%s = (Table.%s) ( int.Parse(vals[%s]) );" \
                         % (name_field, _type_idx, field_index))
@@ -228,7 +231,7 @@ class ResTool(object):
                 if _val.endswith(".0"):
                     _val = _val[:-2]
 
-                if _type_field in ["bool", "boolean", "int", "float"]:
+                if _type_field in ["bool", "boolean", "int", "float", "double"]:
                     if _val == "":
                         _ += u"0\t"
                     else:

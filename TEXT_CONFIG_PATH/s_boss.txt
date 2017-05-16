@@ -1,0 +1,6 @@
+id	next_id	name	resource	continued_day	map_id	time_limit	challenge_count	challenge_cd
+int	int	string	string	int	string	int	int	int
+id	下个id	BOSS名称	美术资源	持续天数	场景编号	时间限制	基本挑战次数	挑战cd
+1001	1002	name_boss_1		1	40600010	180	5	30000
+1002	1003	name_boss_2		2	40600020	180	5	30000
+1003	1001	name_boss_3		3	40600030	180	5	30000

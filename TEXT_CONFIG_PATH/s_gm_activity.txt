@@ -1,0 +1,12 @@
+id	switches	icon	order_id	name	des	banner	timer_type	enable_time	enable_last_time	open_time	open_last_time	template_type
+int	int	string	int	string	string	string	int	string	int	string	int	string
+活动id	强制开关	图标	排序id	活动名称	活动描述	活动banner	生效时间类型	生效阶段开始时间参数	生效阶段持续时长	活动开放的开始时间参数	活动持续时长	调用活动类型
+1001	1	ActivityItem_SevenDaysGift	1	name_activity_1001	desc_name_activity_2001	SevenDaysGiftBanner	2	0	864000	0	0	game_progress
+1002	1	ActivityItem_PowerGot	2	name_activity_1002	desc_name_activity_2002	PowerGotBanner	2	0	0	0	0	power_every_day
+1003	1	ActivityItem_PlayerLevel	3	name_activity_1003	desc_name_activity_2003	PlayerLevelBanner	2	0	1296000	0	0	game_progress
+1004	1	ActivityItem_IntimacyLevel	4	name_activity_1004	desc_name_activity_2004	IntimacyLevelBanner	2	0	1296000	0	0	game_progress
+1005	1	ActivityItem_FightPowerAward	5	name_activity_1005	desc_name_activity_2005	FightPowerAwardBanner	2	0	1296000	0	0	game_progress
+1006	1	ActivityItem_FightCmdProgress	6	name_activity_1006	desc_name_activity_2006	FightCmdProgressBanner	2	0	1296000	0	0	game_progress
+1007	1	ActivityItem_SimulateTrainScore	7	name_activity_1007	desc_name_activity_2007	SimulateTrainScoreBanner	2	0	1296000	0	0	game_progress
+1008	1	ActivityItem_TowerMaxFloor	8	name_activity_1008	desc_name_activity_2008	TowerMaxFloorBanner	2	0	1296000	0	0	game_progress
+1009	1	ActivityItem_Exam	9	name_activity_1009	desc_name_activity_2009	ExamBanner	2	0	1296000	0	0	game_progress
