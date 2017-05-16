@@ -22,7 +22,9 @@ else:
 EXCEL_CONFIG_PATH = os.getenv("EXCEL_CONFIG_PATH")
 TEXT_CONFIG_PATH = os.getenv("TEXT_CONFIG_PATH")
 WRITE_TO_FILE = "./%s/" % TEXT_CONFIG_PATH + "%s.txt"
+TYPE_START_ROW = 0
 NAME_START_ROW = 1
+COMMENT_START_ROW = 2
 DATA_START_ROW = 4
 class EasyXLS(object):
     """
@@ -78,6 +80,20 @@ class EasyXLS(object):
         #self.name_ignore_index = name_ignore_index
         return self.append_string([x for x in _row if not x.startswith("_")], []), _row, _ignores
 
+    def read_type_row(self, _sheet):
+        """
+        read type row data from sheet.
+        """
+        return [_sheet.cell(COMMENT_START_ROW, _col).value for _col in range(_sheet.ncols) \
+                if _col not in self.name_ignore_index]
+
+    def read_comment_row(self, _sheet):
+        """
+        read comment row data from sheet.
+        """
+        return [_sheet.cell(TYPE_START_ROW, _col).value for _col in range(_sheet.ncols) \
+                if _col not in self.name_ignore_index]
+
     def read_data_row(self, _row, _sheet):
         """
         read data row's data and filter useless row data.
@@ -94,7 +110,6 @@ class EasyXLS(object):
         """
         return [_sheet.cell(_row, _col).value for _col in range(_sheet.ncols) \
                 if _col not in self.name_ignore_index]
-        #return  _sheet.row_values(_row)
 
     def read_data_from_sheets(self, _sheets):
         """
@@ -102,7 +117,13 @@ class EasyXLS(object):
         """
         for _sheet in _sheets:
             print "read data from excel - [%s]" % _sheet.name
+            # step 1: read name row data from sheet, and prepare ignore index list.
             sheet_data, self.name_row, self.name_ignore_index = self.read_name_row(_sheet)
+            # step 2: read type row data from sheet.
+            sheet_data.append(self.read_type_row(_sheet))
+            # step 3: read comment row data from sheet.
+            sheet_data.append(self.read_comment_row(_sheet))
+            # step 4: loop read data row from sheet.
             for _row in range(DATA_START_ROW, _sheet.nrows):
                 # read and append row data
                 sheet_data = self.append_string(self.read_data_row(_row, _sheet), sheet_data)
