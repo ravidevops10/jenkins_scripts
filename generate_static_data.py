@@ -140,7 +140,7 @@ def scan_files():
     """
     return [os.path.join(EXCEL_CONFIG_PATH, x)\
              for x in os.listdir("./" + EXCEL_CONFIG_PATH)\
-                if x.strip() != ".svn"]
+                if ".svn" in x.strip()]
 
 def write_to_text(_name, _data):
     """
