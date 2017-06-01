@@ -74,7 +74,7 @@ class ResTool(object):
         """
         print "write to file - ", _file
         with open(_file, "wb") as _:
-            _.writelines("\n".join([line.encode("utf8") for line in data]))
+            _.writelines("\n".join([line for line in data]))
 
     def generate_cs_from_data(self, outpath, filename, _comment, _name, _type):
         """
