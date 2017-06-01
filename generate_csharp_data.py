@@ -83,11 +83,12 @@ class ResTool(object):
         if _type is None and _name is None and _comment is None:
             return
         out_filename = os.path.join(outpath, filename + ".cs")
-        out_stream = [u"using System;",
-                      u"using System.Collections.Generic;",
-                      u"using System.Text;",
-                      u"using UnityEngine;\n",
+        out_stream = [#u"using System;",
+                      #u"using System.Collections.Generic;",
+                      #u"using System.Text;",
+                      #u"using UnityEngine;\n",
                       u"namespace Table {",
+					  u"[System.Serializable]",
                       u"public class %s\n{" % filename]
 
         for _type_idx, type_field in enumerate(_type):
