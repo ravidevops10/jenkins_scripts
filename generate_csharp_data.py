@@ -116,21 +116,19 @@ class ResTool(object):
                       u"using UnityEngine;\n",
                       u"namespace Table {",
                       u"public class %s_table\n{" % filename,
-                      u"\tprivate %s[]\tentities;\n" % filename]
+                      u"\tprivate %s[] entities;\n" % filename]
 
         if _type[0] == "string":
-            out_stream.append(u"\tprivate Dictionary<string, int>\t\
-        keyIdxMap = new Dictionary<string, int>();\n")
+            out_stream.append(u"\tprivate Dictionary<string, int> keyIdxMap = new Dictionary<string, int>();\n")
         else:
-            out_stream.append(u"\tprivate Dictionary<int, int>\t\
-        keyIdxMap = new Dictionary<int, int>();\n")
+            out_stream.append(u"\tprivate Dictionary<int, int> keyIdxMap = new Dictionary<int, int>();\n")
         out_stream.extend([
             u"\tprivate int count;\n\tpublic int Count\n\t{\n\
         \t\tget { return this.count; }\n\t}\n",
             u"\tstatic %s_table sInstance = null;\n\tpublic static %s_table Instance\n\
         \t{\n\t\tget\n\t\t{" % (filename, filename),
             u"\t\t\tif (sInstance == null)\n\t\t\t{\n\
-            \t\t\t\tsInstance = new %s_table();\n\t\t\t\tsInstance.Load();\n\t\t\t\t}\n" % filename,
+\t\t\t\tsInstance = new %s_table();\n\t\t\t\tsInstance.Load();\n\t\t\t\t}\n" % filename,
             u"\t\t\treturn sInstance; \n\t\t}\n\t}\n\n\
         \tvoid Load()\n\t{\n\t\tAction<string> onTableLoad = (text) => {",
             u"\t\tstring[] lines = text.Split(\"\\n\\r\".ToCharArray(), \
