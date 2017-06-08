@@ -25,7 +25,7 @@ WRITE_TO_FILE = "./%s/" % TEXT_CONFIG_PATH + "%s.txt"
 TYPE_START_ROW = 0
 NAME_START_ROW = 1
 COMMENT_START_ROW = 2
-DATA_START_ROW = 4
+DATA_START_ROW = 3
 class EasyXLS(object):
     """
     used for read excel.
