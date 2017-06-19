@@ -31,6 +31,7 @@ class Live2dResources(object):
         """
         need to write sth.
         """
+        print "here we got clothes :", os.listdir(role_path)
         _mocs = [os.path.join(role_path, x) for x in os.listdir(role_path) if x.endswith(".moc")]
         return [x.replace(".moc", ".json") for x in _mocs]
 
