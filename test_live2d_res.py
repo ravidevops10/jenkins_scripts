@@ -13,7 +13,7 @@ import json
 import time
 import pytest
 import allure
-LIVE2D_RES_PATH = os.getenv("LIVE2D_RES_PATH") or os.getcwd()
+LIVE2D_RES_PATH = os.getcwd()
 
 class Live2dResources(object):
     """
@@ -54,7 +54,8 @@ class Live2dResources(object):
         """
         with open(cloth_data, "rb") as _setting:
             return json.load(_setting)
-@allure.feature("ceshi")
+
+
 @pytest.fixture(scope="module", params = Live2dResources.get_l2d_clothes())
 def l2d_res(request):
     return Live2dResources(request.param)
