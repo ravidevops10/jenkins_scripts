@@ -46,7 +46,7 @@ class Live2dResources(object):
         clothes = []
         for role in role_ids:
             clothes.extend(Live2dResources.get_l2d_settings(role))
-            print clothes
+            print "clothes in loop is ", clothes
         
         print "current path is ", os.getcwd()
         print "here we got :", os.listdir(LIVE2D_RES_PATH)
