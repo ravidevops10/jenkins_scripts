@@ -45,8 +45,10 @@ class Live2dResources(object):
                 if ".py" not in x and x.isdigit()]
         clothes = []
         for role in role_ids:
-            clothes.extend(Live2dResources.get_l2d_settings(role))
-            print "clothes in loop is ", clothes
+            role_clothes = Live2dResources.get_l2d_settings(role)
+            print "clothes in loop is ", role_clothes
+            clothes.extend(role_clothes)
+            
         
         print "current path is ", os.getcwd()
         print "here we got :", os.listdir(LIVE2D_RES_PATH)
