@@ -33,7 +33,7 @@ class Live2dResources(object):
         """
         _mocs = [os.path.join(role_path, x) for x in os.listdir(role_path) if x.endswith(".moc")]
         return [x.replace(".moc", ".json") for x in _mocs]
-    
+
     @staticmethod
     def get_l2d_clothes():
         """
@@ -54,18 +54,16 @@ class Live2dResources(object):
         """
         with open(cloth_data, "rb") as _setting:
             return json.load(_setting)
-
+@allure.feature("ceshi")
 @pytest.fixture(scope="module", params = Live2dResources.get_l2d_clothes())
 def l2d_res(request):
     return Live2dResources(request.param)
 
-@allure.step('检查L2D模型')
 def test_model(l2d_res):
     assert "model" in l2d_res.cloth_json
     moc_file = os.path.join(l2d_res.cloth_root, l2d_res.cloth_json["model"])
     assert os.path.exists(moc_file)
 
-@allure.step('检查L2D贴图')
 def test_texture(l2d_res):
     assert "textures" in l2d_res.cloth_json
     assert len(l2d_res.cloth_json["textures"]) > 0
@@ -73,7 +71,6 @@ def test_texture(l2d_res):
     for texture in tt_files:
         assert os.path.exists(texture)
 
-@allure.step('检查L2D点击区域')
 def test_hitareas(l2d_res):
     if l2d_res.cloth_id in l2d_res.npc_role_list:
         return
@@ -85,7 +82,6 @@ def test_hitareas(l2d_res):
         assert _cfg["id"] in l2d_res.hit_conf[_cfg["name"]]
         # to do: check if id-data is in moc config.
 
-@allure.step('检查L2D动作配置')
 def test_motions(l2d_res):
     assert "motions" in l2d_res.cloth_json
     l2d_mtns = l2d_res.cloth_json["motions"]
@@ -103,13 +99,11 @@ def test_motions(l2d_res):
         assert "shake" in l2d_mtns
         assert "moxiong" in l2d_mtns
 
-@allure.step('检查L2D物理配置')
 def test_physics(l2d_res):
     assert "physics" in l2d_res.cloth_json
     l2d_physics = os.path.join(l2d_res.cloth_root, l2d_res.cloth_json["physics"])
     assert os.path.exists(l2d_physics)
 
-@allure.step('检查L2D表情配置')
 def test_expression(l2d_res):
     assert "expressions" in l2d_res.cloth_json
     l2d_exps = l2d_res.cloth_json["expressions"]
