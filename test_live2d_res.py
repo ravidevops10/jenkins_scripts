@@ -20,7 +20,7 @@ class Live2dResources(object):
     need to write sth.
     """
     def __init__(self, cloth_path):
-        self.npc_role_list = ["30401", "30301", "30200", "30501", "30101"]
+        self.npc_role_list = ["30401", "30301", "30200", "30501", "30601"]
         self.cloth_json = self.read_json(cloth_path)
         self.cloth_id = os.path.basename(cloth_path)[:-5].strip()
         self.cloth_root = os.path.dirname(cloth_path)
