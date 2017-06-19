@@ -13,7 +13,7 @@ import json
 import time
 import pytest
 import allure
-LIVE2D_RES_PATH = os.getcwd()
+LIVE2D_RES_PATH = "./"#os.getcwd()
 
 class Live2dResources(object):
     """
