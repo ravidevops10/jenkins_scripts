@@ -13,7 +13,7 @@ import json
 import time
 import pytest
 import allure
-LIVE2D_RES_PATH = "./live2d_res"#os.getcwd()
+LIVE2D_RES_PATH = "./live2d_res"
 
 class Live2dResources(object):
     """
@@ -31,7 +31,6 @@ class Live2dResources(object):
         """
         need to write sth.
         """
-        print role_path, "here we got clothes :", os.listdir(role_path)
         _mocs = [os.path.join(role_path, x) for x in os.listdir(role_path) if x.endswith(".moc")]
         return [x.replace(".moc", ".json") for x in _mocs]
 
@@ -45,15 +44,7 @@ class Live2dResources(object):
                 if ".py" not in x and x.isdigit()]
         clothes = []
         for role in role_ids:
-            role_clothes = Live2dResources.get_l2d_settings(role)
-            print "clothes in loop is ", role_clothes
-            clothes.extend(role_clothes)
-            
-        
-        print "current path is ", os.getcwd()
-        print "here we got :", os.listdir(LIVE2D_RES_PATH)
-
-        
+            clothes.extend(Live2dResources.get_l2d_settings(role))
         return clothes
 
     @staticmethod
@@ -67,7 +58,6 @@ class Live2dResources(object):
 
 @pytest.fixture(scope="module", params = Live2dResources.get_l2d_clothes())
 def l2d_res(request):
-    print os.getcwd()
     return Live2dResources(request.param)
 
 def test_model(l2d_res):
@@ -111,11 +101,15 @@ def test_motions(l2d_res):
         assert "moxiong" in l2d_mtns
 
 def test_physics(l2d_res):
+    if l2d_res.cloth_id in l2d_res.npc_role_list:
+        return
     assert "physics" in l2d_res.cloth_json
     l2d_physics = os.path.join(l2d_res.cloth_root, l2d_res.cloth_json["physics"])
     assert os.path.exists(l2d_physics)
 
 def test_expression(l2d_res):
+    if l2d_res.cloth_id in l2d_res.npc_role_list:
+        return
     assert "expressions" in l2d_res.cloth_json
     l2d_exps = l2d_res.cloth_json["expressions"]
     assert len(l2d_exps) > 0
