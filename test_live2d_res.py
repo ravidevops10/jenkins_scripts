@@ -45,6 +45,7 @@ class Live2dResources(object):
         clothes = []
         for role in role_ids:
             clothes.extend(Live2dResources.get_l2d_settings(role))
+        print clothes
         return clothes
 
     @staticmethod
