@@ -55,7 +55,7 @@ class Live2dResources(object):
         with open(cloth_data, "rb") as _setting:
             return json.load(_setting)
 
-@pytest.allure.testcase("live2d")
+@pytest.allure.testcase("live2d资源配置检查用例")
 @pytest.fixture(scope="module", params = Live2dResources.get_l2d_clothes())
 def l2d_res(request):
     return Live2dResources(request.param)
