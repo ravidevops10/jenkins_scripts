@@ -55,18 +55,18 @@ class Live2dResources(object):
         with open(cloth_data, "rb") as _setting:
             return json.load(_setting)
 
-@pytest.allure.feature("live2d资源配置检查用例")
+@pytest.allure.testcase("live2d资源配置检查用例")
 @pytest.fixture(scope="module", params = Live2dResources.get_l2d_clothes())
 def l2d_res(request):
     return Live2dResources(request.param)
 
-@pytest.allure.story("检查L2D模型配置")
+@pytest.allure.feature("检查L2D模型配置")
 def test_model(l2d_res):
     assert "model" in l2d_res.cloth_json
     moc_file = os.path.join(l2d_res.cloth_root, l2d_res.cloth_json["model"])
     assert os.path.exists(moc_file)
 
-@pytest.allure.story("检查L2D贴图配置")
+@pytest.allure.feature("检查L2D贴图配置")
 def test_texture(l2d_res):
     assert "textures" in l2d_res.cloth_json
     assert len(l2d_res.cloth_json["textures"]) > 0
@@ -74,7 +74,7 @@ def test_texture(l2d_res):
     for texture in tt_files:
         assert os.path.exists(texture)
 
-@pytest.allure.story("检查L2D点击区域配置")
+@pytest.allure.feature("检查L2D点击区域配置")
 def test_hitareas(l2d_res):
     if l2d_res.cloth_id in l2d_res.npc_role_list:
         return
@@ -86,7 +86,7 @@ def test_hitareas(l2d_res):
         assert _cfg["id"] in l2d_res.hit_conf[_cfg["name"]]
         # to do: check if id-data is in moc config.
 
-@pytest.allure.story("检查L2D动作配置")
+@pytest.allure.feature("检查L2D动作配置")
 def test_motions(l2d_res):
     assert "motions" in l2d_res.cloth_json
     l2d_mtns = l2d_res.cloth_json["motions"]
@@ -104,7 +104,7 @@ def test_motions(l2d_res):
         assert "shake" in l2d_mtns
         assert "moxiong" in l2d_mtns
 
-@pytest.allure.story("检查L2D物理配置")
+@pytest.allure.feature("检查L2D物理配置")
 def test_physics(l2d_res):
     if l2d_res.cloth_id in l2d_res.npc_role_list:
         return
@@ -112,7 +112,7 @@ def test_physics(l2d_res):
     l2d_physics = os.path.join(l2d_res.cloth_root, l2d_res.cloth_json["physics"])
     assert os.path.exists(l2d_physics)
 
-@pytest.allure.story("检查L2D表情配置")
+@pytest.allure.feature("检查L2D表情配置")
 def test_expression(l2d_res):
     if l2d_res.cloth_id in l2d_res.npc_role_list:
         return
