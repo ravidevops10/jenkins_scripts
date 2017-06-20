@@ -68,6 +68,7 @@ def test_model(l2d_res):
     moc_file = os.path.join(l2d_res.cloth_root, l2d_res.cloth_json["model"])
     assert os.path.exists(moc_file)
 
+@pytest.allure.feature("L2D资源配置检查")
 @pytest.allure.story("检查L2D贴图配置")
 def test_texture(l2d_res):
     assert "textures" in l2d_res.cloth_json
@@ -111,6 +112,9 @@ def test_motions(l2d_res):
 @pytest.allure.feature("L2D资源配置检查")
 @pytest.allure.story("检查L2D物理配置")
 def test_physics(l2d_res):
+    """
+    检查物理配置
+    """
     if l2d_res.cloth_id in l2d_res.npc_role_list:
         return
     assert "physics" in l2d_res.cloth_json
@@ -120,6 +124,9 @@ def test_physics(l2d_res):
 @pytest.allure.feature("L2D资源配置检查")
 @pytest.allure.story("检查L2D表情配置")
 def test_expression(l2d_res):
+    """
+    检查表情配置，为json，最后需要预读一次检查格式
+    """
     if l2d_res.cloth_id in l2d_res.npc_role_list:
         return
     assert "expressions" in l2d_res.cloth_json
