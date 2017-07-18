@@ -157,7 +157,8 @@ def write_to_text(_name, _data):
 
     with codecs.open(WRITE_TO_FILE % _name, "w", "utf_8_sig") as _f:
         wd = "\n".join(_data)
-        _f.write(wd.encode("utf-8"))
+        wd = wd.decode("utf8")
+        _f.write(wd)
     #print "bom code is -- ", repr(code)
 
 if __name__ == "__main__":
