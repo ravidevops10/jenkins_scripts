@@ -155,7 +155,7 @@ def write_to_text(_name, _data):
         #wd = "\n".join(_data)
         #_f.write(wd.encode("utf-8"))
 
-    with codecs.open(WRITE_TO_FILE % _name, "w", "utf_8_sig") as _f:
+    with codecs.open(WRITE_TO_FILE % _name, "w", "utf8") as _f:
         wd = "\n".join(_data)
         wd = wd.decode("gbk")
         _f.write(wd)
