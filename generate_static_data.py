@@ -57,7 +57,7 @@ class EasyXLS(object):
         if isinstance(_data, (float, int)):
             return str(int(_data)) if str(_data).endswith(".0") else str(_data)
         elif isinstance(_data, unicode):
-            return _data.encode("utf-8")
+            return _data#.encode("utf-8")
         else:
             return _data
 
@@ -150,9 +150,9 @@ def write_to_text(_name, _data):
     write data to text file.
     """
 
-    with open(WRITE_TO_FILE % _name, "wb") as _f:
+    with open(WRITE_TO_FILE % _name, "wb" ) as _f:
         wd = "\n".join(_data)
-        _f.write(wd.encode("utf-8"))
+        _f.write(wd.encode("utf8"))
 
 
 if __name__ == "__main__":
