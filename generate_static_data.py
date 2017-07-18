@@ -152,7 +152,7 @@ def write_to_text(_name, _data):
     
 
     with open(WRITE_TO_FILE % _name, "wb" ) as _f:
-        wd = "\n".join(_data)
+        wd = u"".join(_data)
         _f.write(wd.encode("utf8"))
 
 
