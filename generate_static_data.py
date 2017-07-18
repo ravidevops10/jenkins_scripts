@@ -149,8 +149,10 @@ def write_to_text(_name, _data):
     """
     write data to text file.
     """
+    #import codecs
+    #with codecs.open()
 
-    with open(WRITE_TO_FILE % _name, "wb" ) as _f:
+    with open(WRITE_TO_FILE % _name, "w" ) as _f:
         wd = "\n".join(_data)
         _f.write(wd.encode("utf8"))
 
