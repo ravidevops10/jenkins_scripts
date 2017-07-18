@@ -158,7 +158,7 @@ def write_to_text(_name, _data):
     with codecs.open(WRITE_TO_FILE % _name, "w", "utf8") as _f:
         wd = u"\n".join(_data)
         print "string is ", isinstance(wd, unicode)
-        wd = wd.decode("gbk")
+        #wd = wd.encode("gbk")
         _f.write(wd)
     #print "bom code is -- ", repr(code)
 
