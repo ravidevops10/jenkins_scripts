@@ -155,7 +155,7 @@ def write_to_text(_name, _data):
         wd = "\n".join(_data)
         _f.write(wd.encode("utf8"))
 
-    with open(WRITE_TO_FILE % _name, "w" ) as _f:
+    with open(WRITE_TO_FILE % _name, "r" ) as _f:
         code = _f.read(3)
     print code, " -- "#, (code == codecs.BOM_UTF8)
 
