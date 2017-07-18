@@ -149,8 +149,10 @@ def write_to_text(_name, _data):
     """
     write data to text file.
     """
+
     with open(WRITE_TO_FILE % _name, "wb") as _f:
-        _f.writelines(_data)
+        wd = "\n".join(_data)
+        _f.write(wd.encode("utf-8"))
 
 
 if __name__ == "__main__":
