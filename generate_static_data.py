@@ -151,13 +151,14 @@ def write_to_text(_name, _data):
     """
     import codecs
    
-    with open(WRITE_TO_FILE % _name, "w" ) as _f:
+    #with open(WRITE_TO_FILE % _name, "w" ) as _f:
+        #wd = "\n".join(_data)
+        #_f.write(wd.encode("utf-8"))
+
+    with codecs.open(WRITE_TO_FILE % _name, "w", "utf_8_sig") as _f:
         wd = "\n".join(_data)
         _f.write(wd.encode("utf-8"))
-
-    with open(WRITE_TO_FILE % _name, "r" ) as _f:
-        code = _f.read(3)
-    print "bom code is -- ", repr(code)
+    #print "bom code is -- ", repr(code)
 
 if __name__ == "__main__":
     print TEXT_CONFIG_PATH
