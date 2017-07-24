@@ -35,12 +35,13 @@ b_package = os.getenv("package_Name")
 b_branch = os.getenv("BRANCH")
 b_version = os.getenv("JOKER_VERSION")
 b_build = os.getenv("BUILD_NUMBER")
-b_git = os.getenv("GIT_COMMIT")[:6]
+#b_git = os.getenv("GIT_COMMIT")[:6]
 b_time = time.ctime()
 DeviceType = os.getenv("device_type")
 VersionType = os.getenv("version_type")
 workspace = os.getenv("WORKSPACE")
-SVN_REVISION = os.getenv("SVN_REVISION_2")# because of jekens passed SVN_REVISION_2
+SVN_REVISION_CODE = os.getenv("SVN_REVISION_2")# because of jekens passed SVN_REVISION_2
+SVN_REVISION_RES = os.getenv("SVN_REVISION_3")# because of jekens passed SVN_REVISION_3
 versioned_package_name = os.getenv("BUILD_PACKAGE_NAME")
 ServerIP = "http://192.168.1.24"
 history_url = ServerIP + r"/json/history.json"
@@ -58,7 +59,7 @@ def get_url_json(_url):
     client_json = read_url_json(_url)
     client_json[DeviceType]["version"] = b_version
     client_json[DeviceType]["build"] = b_build
-    client_json[DeviceType]["git"] = b_git
+    client_json[DeviceType]["git"] = SVN_REVISION_CODE
     client_json[DeviceType]["time"] = b_time
     return client_json
     
@@ -102,7 +103,7 @@ def refresh_json_files(_name, _prefix,_json):
     _history = read_url_json(history_url)
     _history[DeviceType][VersionType].append({"name":_name,"time":b_time,"json":r"%s.json" % _prefix})
     # update version json data
-    _version = {"git": b_git, "svn": SVN_REVISION, "build":"%s-%s-%s-%s" % (DeviceType, b_branch, b_version, b_build), "time":b_time}
+    _version = {"git": SVN_REVISION_CODE, "svn": SVN_REVISION_RES, "build":"%s-%s-%s-%s" % (DeviceType, b_branch, b_version, b_build), "time":b_time}
     # write json data to files.
     write_local_file(r"history.json", json.dumps(_history))
     write_local_file(r"version.json", json.dumps(_version))
