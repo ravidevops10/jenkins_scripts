@@ -16,6 +16,8 @@ VersionType = os.getenv("version_type")
 workspace = os.getenv("WORKSPACE")
 CODE_SVN_REVISION = os.getenv("SVN_REVISION_2")# because of jekens passed SVN_REVISION_2
 RES_SVN_REVISION = os.getenv("SVN_REVISION_3")# because of jekens passed SVN_REVISION_3
+print CODE_SVN_REVISION
+print RES_SVN_REVISION
 versionFile = "version.json"
 # only for host url json data
 dev_host = os.getenv("RES_HOST_DEV")
@@ -63,7 +65,7 @@ def init_ver():
     b_time = time.ctime()
     return {    
                 "git": b_version + "_" + CODE_SVN_REVISION,
-                "svn": SVN_REVISION, 
+                "svn": RES_SVN_REVISION, 
                 "build":"%s-%s-%s-%s" % (DeviceType, b_branch, b_version, b_build), 
                 "time":b_time
                 }
@@ -89,4 +91,5 @@ if __name__ == "__main__":
 
     else:
         print "Launch Server Host File is not exists, skipped modify Launch Server Host file."
+    
     
