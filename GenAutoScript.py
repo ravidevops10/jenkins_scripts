@@ -168,7 +168,7 @@ def main():
     """
     print "ready to run python-based version info generator, the package name is ", versioned_package_name
     # step 1: prepare arguments.
-    remote_package_url = ServerIP + r"/download/%s/%s/" % (DeviceType, b_branch)
+    remote_package_url = ServerIP + r"/download/%s/%s/" % (DeviceType, b_package)
     #versioned_package_name = "%s_%s_%s_%s_%s_%s_build%s_%s" % (b_package, DeviceType, b_branch, b_version, b_git, SVN_REVISION, b_build, VersionType)
     # step 2: prepare client json
     client_json = get_url_json(remote_json)
