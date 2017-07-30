@@ -100,7 +100,7 @@ def update_ios_json(_json, _prefix, _remote):
 def refresh_json_files(_name, _prefix,_json):
     # update history json data
     _history = read_url_json(history_url)
-    _history[DeviceType][VersionType].append({"name":_name,"time":b_time,"json":r"%s.json" % _prefix})
+    _history[DeviceType][b_package].append({"name":_name,"time":b_time,"json":r"%s.json" % _prefix})
     # update version json data
     _version = {"git": SVN_REVISION_CODE, "svn": SVN_REVISION_RES, "build":"%s-%s-%s-%s" % (DeviceType, b_branch, b_version, b_build), "time":b_time}
     # write json data to files.
