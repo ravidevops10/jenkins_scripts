@@ -11,11 +11,11 @@ import time
 b_branch = os.getenv("BRANCH")
 b_version = os.getenv("JOKER_VERSION")
 b_build = os.getenv("BUILD_NUMBER")
-b_git = os.getenv("GIT_COMMIT")[:6]
 DeviceType = os.getenv("device_type")
 VersionType = os.getenv("version_type")
 workspace = os.getenv("WORKSPACE")
-SVN_REVISION = os.getenv("SVN_REVISION_2")# because of jekens passed SVN_REVISION_2
+CODE_SVN_REVISION = os.getenv("SVN_REVISION_2")# because of jekens passed SVN_REVISION_2
+RES_SVN_REVISION = os.getenv("SVN_REVISION_3")# because of jekens passed SVN_REVISION_3
 versionFile = "version.json"
 # only for host url json data
 dev_host = os.getenv("RES_HOST_DEV")
@@ -62,7 +62,7 @@ def init_ver():
     """
     b_time = time.ctime()
     return {    
-                "git": b_version + "_" + b_git, 
+                "git": b_version + "_" + CODE_SVN_REVISION,
                 "svn": SVN_REVISION, 
                 "build":"%s-%s-%s-%s" % (DeviceType, b_branch, b_version, b_build), 
                 "time":b_time

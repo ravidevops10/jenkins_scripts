@@ -32,12 +32,11 @@ import subprocess
 # step 1: get env data
 
 b_package = os.getenv("package_Name")
-b_branch = os.getenv("BRANCH")
 b_version = os.getenv("JOKER_VERSION")
 b_build = os.getenv("BUILD_NUMBER")
 #b_git = os.getenv("GIT_COMMIT")[:6]
 b_time = time.ctime()
-DeviceType = os.getenv("device_type")
+DeviceType = os.getenv("device_type").lower()
 VersionType = os.getenv("version_type")
 workspace = os.getenv("WORKSPACE")
 SVN_REVISION_CODE = os.getenv("SVN_REVISION_2")# because of jekens passed SVN_REVISION_2
